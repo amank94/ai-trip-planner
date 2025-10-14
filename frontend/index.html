@@ -9,9 +9,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-neutral-50 text-neutral-900 antialiased font-[Inter]">
+<body class="text-neutral-900 antialiased font-[Inter]" style="background: #FF1493;">
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+  
   <!-- Nav -->
-  <header class="border-b border-neutral-200 bg-white/80 backdrop-blur">
+  <header class="relative z-10 border-b border-neutral-200 bg-white/80 backdrop-blur">
     <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 via-violet-600 to-fuchsia-600 text-white">
@@ -23,7 +26,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="mx-auto max-w-7xl px-6 pt-10 pb-8">
+  <section class="relative z-10 mx-auto max-w-7xl px-6 pt-10 pb-8">
     <div class="relative overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-tr from-indigo-600 via-violet-600 to-fuchsia-600">
       <div class="absolute inset-0 opacity-20">
         <img alt="Mountain landscape" class="h-full w-full object-cover"
@@ -114,7 +117,7 @@
   </section>
 
   <!-- Planner -->
-  <main class="mx-auto max-w-7xl px-6 pb-20">
+  <main class="relative z-10 mx-auto max-w-7xl px-6 pb-20">
     <div class="grid gap-6 lg:grid-cols-3">
       <!-- Form -->
       <section class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
@@ -238,7 +241,7 @@
     </div>
   </main>
 
-  <footer class="border-t border-neutral-200 bg-white">
+  <footer class="relative z-10 border-t border-neutral-200 bg-white">
     <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-neutral-600">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-2">
@@ -360,6 +363,143 @@
     }
 
     form.addEventListener('submit', submitToBackend);
+  </script>
+
+  <!-- Fireworks Animation -->
+  <script>
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Firework particle class
+    class Particle {
+      constructor(x, y, color, velocity) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.velocity = velocity;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.015;
+      }
+      
+      update() {
+        this.velocity.x *= 0.98;
+        this.velocity.y *= 0.98;
+        this.velocity.y += 0.15; // gravity
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.alpha -= this.decay;
+      }
+      
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    // Rocket class
+    class Rocket {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.targetY = Math.random() * canvas.height * 0.4 + canvas.height * 0.1;
+        this.velocity = { x: (Math.random() - 0.5) * 2, y: -8 - Math.random() * 3 };
+        this.exploded = false;
+        this.alpha = 1;
+      }
+      
+      update() {
+        if (!this.exploded) {
+          this.velocity.y += 0.1;
+          this.x += this.velocity.x;
+          this.y += this.velocity.y;
+          
+          if (this.y <= this.targetY) {
+            this.explode();
+          }
+        }
+      }
+      
+      draw() {
+        if (!this.exploded) {
+          ctx.save();
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = '#fff';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      
+      explode() {
+        this.exploded = true;
+        const colors = ['#FFD700', '#FFF', '#00FFFF', '#FF69B4', '#FFFF00', '#FF1493'];
+        const particleCount = 80 + Math.random() * 40;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const angle = (Math.PI * 2 * i) / particleCount;
+          const velocity = {
+            x: Math.cos(angle) * (Math.random() * 6 + 2),
+            y: Math.sin(angle) * (Math.random() * 6 + 2)
+          };
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          particles.push(new Particle(this.x, this.y, color, velocity));
+        }
+      }
+    }
+    
+    const rockets = [];
+    const particles = [];
+    
+    // Launch fireworks periodically
+    function launchRocket() {
+      if (Math.random() < 0.7) {
+        rockets.push(new Rocket());
+      }
+    }
+    
+    // Animation loop
+    function animate() {
+      ctx.fillStyle = 'rgba(255, 20, 147, 0.1)'; // Hot pink with transparency
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Update and draw rockets
+      for (let i = rockets.length - 1; i >= 0; i--) {
+        rockets[i].update();
+        rockets[i].draw();
+        if (rockets[i].exploded) {
+          rockets.splice(i, 1);
+        }
+      }
+      
+      // Update and draw particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].alpha <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    // Start animation
+    animate();
+    setInterval(launchRocket, 800);
   </script>
 </body>
 </html>
