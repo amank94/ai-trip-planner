@@ -1,0 +1,63 @@
+---
+description: Python backend conventions for FastAPI and LangChain
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# Python Backend Standards
+
+## Imports Order
+
+1. Standard library
+2. Third-party (fastapi, langchain, etc.)
+3. Local modules
+
+## Pydantic Models
+
+Use Pydantic for request/response validation:
+
+```python
+class TripRequest(BaseModel):
+    destination: str
+    duration: str
+    budget: Optional[str] = None
+```
+
+## Tool Definition
+
+Use `@tool` decorator with clear docstrings:
+
+```python
+@tool
+def essential_info(destination: str) -> str:
+    """Return essential destination info like weather, sights, and etiquette."""
+    # Try API first, fall back to LLM
+    summary = _search_api(query)
+    if summary:
+        return summary
+    return _llm_fallback(instruction)
+```
+
+## Error Handling
+
+Always use graceful degradation:
+
+```python
+# ✅ GOOD - Try API, fall back gracefully
+try:
+    result = await external_api()
+except Exception:
+    result = fallback_response()
+
+# ❌ BAD - Let errors propagate
+result = await external_api()  # Will crash if API fails
+```
+
+## Environment Variables
+
+Load via `python-dotenv` at module start:
+
+```python
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+```

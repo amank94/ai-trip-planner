@@ -1,0 +1,77 @@
+---
+description: LangGraph agent patterns and best practices
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# LangGraph Agent Patterns
+
+## State Definition
+
+Use TypedDict with Annotated for reducers:
+
+```python
+class TripState(TypedDict):
+    messages: Annotated[List[BaseMessage], operator.add]
+    trip_request: Dict[str, Any]
+    research: Optional[str]
+    tool_calls: Annotated[List[Dict[str, Any]], operator.add]
+```
+
+## Agent Structure
+
+Each agent should:
+1. Extract data from state
+2. Build prompt with template
+3. Bind tools and invoke LLM
+4. Process tool calls if any
+5. Return updated state
+
+```python
+def research_agent(state: TripState) -> TripState:
+    req = state["trip_request"]
+    destination = req["destination"]
+    
+    messages = [SystemMessage(content=prompt)]
+    tools = [essential_info, weather_brief]
+    agent = llm.bind_tools(tools)
+    
+    res = agent.invoke(messages)
+    # ... process tool calls ...
+    
+    return {"research": output, "tool_calls": calls}
+```
+
+## Graph Building
+
+Use parallel edges for independent agents:
+
+```python
+def build_graph():
+    g = StateGraph(TripState)
+    
+    # Add nodes
+    g.add_node("research", research_agent)
+    g.add_node("budget", budget_agent)
+    
+    # Parallel execution from START
+    g.add_edge(START, "research")
+    g.add_edge(START, "budget")
+    
+    # Converge to final agent
+    g.add_edge("research", "itinerary")
+    g.add_edge("budget", "itinerary")
+    g.add_edge("itinerary", END)
+    
+    return g.compile()  # No checkpointer for stateless requests
+```
+
+## Observability
+
+Use `using_attributes` and `using_prompt_template` for tracing:
+
+```python
+with using_attributes(tags=["research"]):
+    with using_prompt_template(template=prompt_t, variables=vars_):
+        res = agent.invoke(messages)
+```

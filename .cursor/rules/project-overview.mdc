@@ -1,0 +1,36 @@
+---
+description: AI Trip Planner project overview and conventions
+alwaysApply: true
+---
+
+# AI Trip Planner Project
+
+A multi-agent system for generating travel itineraries using LangGraph, FastAPI, and LangChain.
+
+## Architecture
+
+- **Backend**: FastAPI app in `backend/main.py`
+- **Agents**: 4 specialized agents (Research, Budget, Local, Itinerary) running in parallel via LangGraph
+- **RAG**: Optional vector search over `backend/data/local_guides.json`
+- **Observability**: Arize tracing (optional)
+
+## Key Patterns
+
+1. **Graceful Degradation**: Tools try real APIs first, fall back to LLM-generated responses
+2. **Parallel Execution**: Research, Budget, and Local agents run simultaneously
+3. **Feature Flags**: Use environment variables (`ENABLE_RAG`, `TEST_MODE`)
+
+## Running the Server
+
+```bash
+cd backend
+source .venv/bin/activate
+uvicorn main:app --host 127.0.0.1 --port 8000
+```
+
+## Environment Variables
+
+- `OPENAI_API_KEY` or `OPENROUTER_API_KEY` (required)
+- `ENABLE_RAG=1` for vector search
+- `TAVILY_API_KEY` for real web search
+- `ARIZE_SPACE_ID` + `ARIZE_API_KEY` for tracing

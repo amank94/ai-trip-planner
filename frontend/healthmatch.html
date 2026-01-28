@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HealthMatch AI - Find Your Perfect Health Insurance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-emerald-50 text-neutral-900 antialiased font-[Inter]">
+  <!-- Nav -->
+  <header class="border-b border-neutral-200 bg-white/80 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white">
+          <i data-lucide="heart-pulse" class="h-5 w-5"></i>
+        </span>
+        <span class="text-lg font-semibold tracking-tight">HealthMatch AI</span>
+      </div>
+      <div class="flex items-center gap-2 text-emerald-700 font-semibold">
+        <i data-lucide="phone" class="h-5 w-5"></i>
+        <a href="tel:1-800-555-1234" class="hover:text-emerald-800">1-800-555-1234</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-7xl px-6 pt-6 pb-4">
+    <div class="relative overflow-hidden rounded-xl border border-neutral-200 bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600">
+      <div class="relative grid gap-4 p-5 md:grid-cols-3 md:p-6">
+        <div class="md:col-span-2">
+          <h1 class="text-white text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+            Find Your Perfect Health Plan
+          </h1>
+          <p class="mt-2 text-emerald-100/90 text-sm md:text-base">
+            Compare plans, estimate costs, and get personalized recommendations in seconds.
+          </p>
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1.5 text-white text-xs">
+              <i data-lucide="search" class="h-3.5 w-3.5"></i>
+              Compare plans
+            </div>
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1.5 text-white text-xs">
+              <i data-lucide="calculator" class="h-3.5 w-3.5"></i>
+              Estimate costs
+            </div>
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1.5 text-white text-xs">
+              <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+              AI recommendations
+            </div>
+          </div>
+          <div class="mt-5">
+            <a href="tel:1-800-555-1234" class="inline-flex items-center gap-3 rounded-lg bg-white px-5 py-3 text-emerald-700 font-bold shadow-lg hover:bg-emerald-50 transition">
+              <i data-lucide="phone" class="h-6 w-6"></i>
+              <span class="text-xl">Call 1-800-555-1234</span>
+            </a>
+            <p class="mt-2 text-emerald-100/80 text-xs">Speak with a licensed agent today</p>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="relative h-full w-full rounded-lg bg-white/10 p-2 ring-1 ring-white/20 backdrop-blur">
+            <img alt="Woman physician" class="h-full w-full rounded-md object-cover"
+                 src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1600&auto=format&fit=crop" />
+            <div class="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-black/30 px-2 py-1 text-white text-xs">
+              <i data-lucide="shield-check" class="h-3 w-3"></i> Coverage you can trust
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+            <i data-lucide="file-search" class="h-5 w-5"></i>
+          </span>
+          <div>
+            <div class="font-semibold tracking-tight">Plan Research</div>
+            <p class="text-sm text-neutral-600">Find eligible plans in your area.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+            <i data-lucide="calculator" class="h-5 w-5"></i>
+          </span>
+          <div>
+            <div class="font-semibold tracking-tight">Cost Analysis</div>
+            <p class="text-sm text-neutral-600">Estimate your true annual costs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+            <i data-lucide="stethoscope" class="h-5 w-5"></i>
+          </span>
+          <div>
+            <div class="font-semibold tracking-tight">Network Check</div>
+            <p class="text-sm text-neutral-600">Verify your doctors are covered.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+            <i data-lucide="badge-check" class="h-5 w-5"></i>
+          </span>
+          <div>
+            <div class="font-semibold tracking-tight">Recommendations</div>
+            <p class="text-sm text-neutral-600">Personalized plan matches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planner -->
+  <main class="mx-auto max-w-7xl px-6 pb-20">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <!-- Form -->
+      <section class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold tracking-tight">Find Your Plan</h2>
+        <p class="mt-1 text-sm text-neutral-600">Enter your information to get personalized health insurance recommendations.</p>
+
+        <form id="insuranceForm" class="mt-6 space-y-4" autocomplete="off">
+          <!-- ZIP Code -->
+          <div>
+            <label for="zipcode" class="block text-sm font-medium text-neutral-800">ZIP Code</label>
+            <div class="mt-2 relative">
+              <input id="zipcode" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required placeholder="e.g., 90210"
+                     class="w-full rounded-lg border border-neutral-300 bg-white px-3.5 py-2.5 text-neutral-900 placeholder-neutral-400 shadow-sm outline-none ring-0 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200" />
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400">
+                <i data-lucide="map-pin" class="h-4.5 w-4.5"></i>
+              </span>
+            </div>
+            <p class="mt-1 text-xs text-neutral-500">Used to find plans available in your area</p>
+          </div>
+
+          <!-- Age -->
+          <div>
+            <label for="age" class="block text-sm font-medium text-neutral-800">Age</label>
+            <div class="mt-2 relative">
+              <input id="age" type="number" inputmode="numeric" min="0" max="120" step="1" required placeholder="e.g., 35"
+                     class="w-full rounded-lg border border-neutral-300 bg-white px-3.5 py-2.5 text-neutral-900 placeholder-neutral-400 shadow-sm outline-none ring-0 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200" />
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400">
+                <i data-lucide="user" class="h-4.5 w-4.5"></i>
+              </span>
+            </div>
+            <p class="mt-1 text-xs text-neutral-500">Age affects premium costs and plan eligibility</p>
+          </div>
+
+          <!-- Household Income -->
+          <div>
+            <label for="income" class="block text-sm font-medium text-neutral-800">Annual Household Income</label>
+            <div class="mt-2 relative">
+              <span class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500">$</span>
+              <input id="income" type="number" inputmode="numeric" min="0" step="1000" required placeholder="e.g., 50000"
+                     class="w-full rounded-lg border border-neutral-300 bg-white pl-8 pr-3.5 py-2.5 text-neutral-900 placeholder-neutral-400 shadow-sm outline-none ring-0 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200" />
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400">
+                <i data-lucide="wallet" class="h-4.5 w-4.5"></i>
+              </span>
+            </div>
+            <p class="mt-1 text-xs text-neutral-500">Used to calculate subsidy eligibility</p>
+          </div>
+
+          <!-- Usage Level (custom select) -->
+          <div class="relative">
+            <label class="block text-sm font-medium text-neutral-800">Expected Healthcare Usage</label>
+            <input id="usageValue" type="hidden" value="medium" />
+            <button id="usageBtn" type="button"
+                    class="mt-2 w-full inline-flex items-center justify-between rounded-lg border border-neutral-300 bg-white px-3.5 py-2.5 text-left text-neutral-900 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+              <span id="usageLabel" class="flex items-center gap-2">
+                <i data-lucide="activity" class="h-4 w-4 text-neutral-500"></i>
+                Medium — Regular checkups, occasional visits
+              </span>
+              <i data-lucide="chevron-down" class="h-4.5 w-4.5 text-neutral-500"></i>
+            </button>
+            <div id="usageMenu" class="absolute z-20 mt-2 hidden w-full overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+              <button type="button" data-value="low" class="flex w-full items-center justify-between px-3.5 py-3 text-sm hover:bg-neutral-50">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="heart" class="h-4 w-4 text-emerald-500"></i>
+                  <span>
+                    <span class="font-medium">Low</span>
+                    <span class="block text-xs text-neutral-500">Rarely visit doctors, no ongoing conditions</span>
+                  </span>
+                </span>
+              </button>
+              <button type="button" data-value="medium" class="flex w-full items-center justify-between px-3.5 py-3 text-sm hover:bg-neutral-50 bg-emerald-50">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="activity" class="h-4 w-4 text-amber-500"></i>
+                  <span>
+                    <span class="font-medium">Medium</span>
+                    <span class="block text-xs text-neutral-500">Regular checkups, occasional specialist visits</span>
+                  </span>
+                </span>
+              </button>
+              <button type="button" data-value="high" class="flex w-full items-center justify-between px-3.5 py-3 text-sm hover:bg-neutral-50">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="activity" class="h-4 w-4 text-red-500"></i>
+                  <span>
+                    <span class="font-medium">High</span>
+                    <span class="block text-xs text-neutral-500">Ongoing conditions, frequent visits, prescriptions</span>
+                  </span>
+                </span>
+              </button>
+            </div>
+            <p class="mt-1 text-xs text-neutral-500">Helps estimate your out-of-pocket costs</p>
+          </div>
+
+          <!-- Submit -->
+          <div class="pt-2">
+            <button type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+              <i data-lucide="search" class="h-5 w-5"></i>
+              <span class="font-medium">Find My Plans</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Output -->
+      <section class="lg:col-span-2 space-y-6">
+        <div id="placeholderCard" class="rounded-xl border border-neutral-200 bg-white p-8 text-center shadow-sm">
+          <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Your personalized plan recommendations will appear here</h3>
+          <p class="mt-2 text-neutral-600">Enter your information on the left to get started.</p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-lg border border-neutral-200 p-4">
+              <div class="flex items-center gap-2 text-neutral-700">
+                <i data-lucide="dollar-sign" class="h-4 w-4"></i>
+                Premium costs
+              </div>
+              <p class="mt-1 text-sm text-neutral-600">Monthly and annual premium estimates.</p>
+            </div>
+            <div class="rounded-lg border border-neutral-200 p-4">
+              <div class="flex items-center gap-2 text-neutral-700">
+                <i data-lucide="shield" class="h-4 w-4"></i>
+                Coverage details
+              </div>
+              <p class="mt-1 text-sm text-neutral-600">Deductibles, copays, and limits.</p>
+            </div>
+            <div class="rounded-lg border border-neutral-200 p-4">
+              <div class="flex items-center gap-2 text-neutral-700">
+                <i data-lucide="thumbs-up" class="h-4 w-4"></i>
+                Why this plan
+              </div>
+              <p class="mt-1 text-sm text-neutral-600">Personalized reasoning for each match.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="results" class="hidden space-y-6"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-neutral-200 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-10 text-sm text-neutral-600">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-emerald-600 text-white">
+            <i data-lucide="heart-pulse" class="h-4.5 w-4.5"></i>
+          </span>
+          <span>&copy; <span id="year"></span> HealthMatch AI</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a class="hover:text-neutral-900" href="#">Privacy</a>
+          <a class="hover:text-neutral-900" href="#">Terms</a>
+          <a class="hover:text-neutral-900" href="#">Support</a>
+        </div>
+      </div>
+      <p class="mt-4 text-xs text-neutral-500 text-center sm:text-left">
+        This tool provides estimates only and does not constitute insurance advice. Always verify plan details with the insurance carrier before enrolling.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // Initialize icons and year
+    function renderIcons() { if (window.lucide) lucide.createIcons(); }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderIcons();
+
+    // Custom usage select
+    const usageBtn = document.getElementById('usageBtn');
+    const usageMenu = document.getElementById('usageMenu');
+    const usageLabel = document.getElementById('usageLabel');
+    const usageValue = document.getElementById('usageValue');
+
+    const usageOptions = {
+      low: { icon: 'heart', color: 'text-emerald-500', label: 'Low — Rarely visit doctors, no ongoing conditions' },
+      medium: { icon: 'activity', color: 'text-amber-500', label: 'Medium — Regular checkups, occasional visits' },
+      high: { icon: 'activity', color: 'text-red-500', label: 'High — Ongoing conditions, frequent visits' }
+    };
+
+    usageBtn.addEventListener('click', () => {
+      usageMenu.classList.toggle('hidden');
+    });
+
+    usageMenu.querySelectorAll('button[data-value]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-value');
+        usageValue.value = val;
+        const opt = usageOptions[val];
+        usageLabel.innerHTML = `<i data-lucide="${opt.icon}" class="h-4 w-4 ${opt.color}"></i> ${opt.label}`;
+        usageMenu.classList.add('hidden');
+        
+        // Update selected state
+        usageMenu.querySelectorAll('button').forEach(b => b.classList.remove('bg-emerald-50'));
+        btn.classList.add('bg-emerald-50');
+        
+        renderIcons();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!usageBtn.contains(e.target) && !usageMenu.contains(e.target)) {
+        usageMenu.classList.add('hidden');
+      }
+    });
+
+    // Form submission
+    const form = document.getElementById('insuranceForm');
+    const results = document.getElementById('results');
+    const placeholderCard = document.getElementById('placeholderCard');
+
+    async function submitForm(e) {
+      e.preventDefault();
+
+      const zipcode = (document.getElementById('zipcode').value || '').trim();
+      const age = parseInt(document.getElementById('age').value || '0', 10);
+      const income = parseInt(document.getElementById('income').value || '0', 10);
+      const usageLevel = document.getElementById('usageValue').value || 'medium';
+
+      if (!zipcode || zipcode.length !== 5) {
+        alert('Please enter a valid 5-digit ZIP code.');
+        return;
+      }
+      if (!age || age < 0 || age > 120) {
+        alert('Please enter a valid age.');
+        return;
+      }
+      if (!income || income < 0) {
+        alert('Please enter a valid income.');
+        return;
+      }
+
+      placeholderCard.classList.add('hidden');
+      results.classList.remove('hidden');
+      results.innerHTML = `
+        <div class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center gap-3 text-neutral-700">
+            <i data-lucide="loader-2" class="h-5 w-5 animate-spin"></i>
+            Analyzing plans and calculating costs...
+          </div>
+        </div>
+      `;
+      renderIcons();
+
+      // Simulate API call (replace with actual backend call)
+      try {
+        // For now, show a demo response
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        const demoResults = `
+## Top 3 Recommended Plans for ZIP ${zipcode}
+
+Based on your profile (Age: ${age}, Income: $${income.toLocaleString()}, Usage: ${usageLevel}):
+
+### 1. Blue Shield Silver 70 ⭐ Best Match
+- **Monthly Premium:** $385/month (after $210 subsidy)
+- **Deductible:** $2,500
+- **Out-of-Pocket Max:** $7,500
+- **Estimated Annual Cost:** $6,120
+
+**Why this plan:** Best balance of premium and coverage for ${usageLevel} healthcare usage. Good network coverage in your area.
+
+---
+
+### 2. Kaiser Permanente Bronze 60
+- **Monthly Premium:** $285/month (after $210 subsidy)
+- **Deductible:** $6,500
+- **Out-of-Pocket Max:** $8,700
+- **Estimated Annual Cost:** $5,420
+
+**Why this plan:** Lowest premium option. Best if you're healthy and rarely need care.
+
+---
+
+### 3. Anthem Gold 80
+- **Monthly Premium:** $495/month (after $210 subsidy)
+- **Deductible:** $1,000
+- **Out-of-Pocket Max:** $6,000
+- **Estimated Annual Cost:** $7,940
+
+**Why this plan:** Lower deductible means less out-of-pocket before insurance kicks in. Good for higher healthcare needs.
+
+---
+
+*Estimates based on your ZIP code and income. Actual costs may vary. [Learn more about subsidies →](#)*
+        `;
+
+        const content = (window.marked && window.marked.parse) ? window.marked.parse(demoResults) : `<pre class="whitespace-pre-wrap">${demoResults}</pre>`;
+        results.innerHTML = `
+          <div class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div class="mb-3 flex items-center justify-between">
+              <h3 class="text-xl font-semibold tracking-tight">Your Plan Recommendations</h3>
+              <button id="printBtn" class="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-sm hover:bg-neutral-50">
+                <i data-lucide="printer" class="h-4 w-4"></i> Print / PDF
+              </button>
+            </div>
+            <div class="prose max-w-none">${content}</div>
+          </div>
+        `;
+        renderIcons();
+        const printBtn = document.getElementById('printBtn');
+        printBtn?.addEventListener('click', () => window.print());
+      } catch (err) {
+        results.innerHTML = `
+          <div class="rounded-xl border border-red-200 bg-red-50 p-6 text-red-700">
+            <div class="flex items-center gap-2">
+              <i data-lucide="alert-triangle" class="h-5 w-5"></i>
+              <span>Failed to find plans. Please try again.</span>
+            </div>
+          </div>
+        `;
+        renderIcons();
+        console.error('Search error:', err);
+      }
+    }
+
+    form.addEventListener('submit', submitForm);
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+---
+description: RAG and vector search patterns
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# RAG Patterns
+
+## Feature Flag
+
+RAG is opt-in via environment variable:
+
+```python
+ENABLE_RAG = os.getenv("ENABLE_RAG", "0").lower() not in {"0", "false", "no"}
+```
+
+## Document Loading
+
+Convert JSON data to LangChain Documents:
+
+```python
+def _load_local_documents(path: Path) -> List[Document]:
+    raw = json.loads(path.read_text())
+    docs = []
+    for row in raw:
+        content = f"City: {row['city']}\nGuide: {row['description']}"
+        metadata = {"city": row["city"], "source": row.get("source")}
+        docs.append(Document(page_content=content, metadata=metadata))
+    return docs
+```
+
+## Retriever Class
+
+Implement with fallback to keyword search:
+
+```python
+class LocalGuideRetriever:
+    def retrieve(self, destination: str, interests: str, k: int = 3):
+        if not ENABLE_RAG:
+            return []
+        
+        # Try vector search first
+        if self._vectorstore:
+            return self._vector_search(destination, interests, k)
+        
+        # Fall back to keyword matching
+        return self._keyword_fallback(destination, interests, k)
+```
+
+## Adding RAG Context to Agents
+
+Inject retrieved context into agent prompts:
+
+```python
+if ENABLE_RAG:
+    retrieved = GUIDE_RETRIEVER.retrieve(destination, interests)
+    if retrieved:
+        context_lines = ["=== Curated Local Guides ==="]
+        for item in retrieved:
+            context_lines.append(item["content"])
+        prompt += "\n".join(context_lines)
+```

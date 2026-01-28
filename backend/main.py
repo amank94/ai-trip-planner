@@ -798,6 +798,16 @@ def serve_frontend():
     return {"message": "frontend/index.html not found"}
 
 
+@app.get("/frontend/{filename}")
+def serve_frontend_file(filename: str):
+    """Serve files from the frontend directory."""
+    here = os.path.dirname(__file__)
+    path = os.path.join(here, "..", "frontend", filename)
+    if os.path.exists(path):
+        return FileResponse(path)
+    return {"message": f"frontend/{filename} not found"}
+
+
 @app.get("/health")
 def health():
     return {"status": "healthy", "service": "ai-trip-planner"}
